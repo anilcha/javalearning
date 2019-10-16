@@ -12,7 +12,7 @@ import com.vastika.uis.model.User;
 import com.vastika.uis.util.DbUtil;
 
 public class UserDaoImpl implements UserDao{
-	public static final String INSERT_SQL="insert into user_form_db.user_form_tbl(user_name, password, email, gender, hobbies, nationality, dob) values(?,?,?,?,?,?,?)";
+	public static final String INSERT_SQL="insert into user_form_tbl(user_name, password, email, gender, hobbies, nationality, dob) values(?,?,?,?,?,?,?)";
 	public static final String UPDATE_SQL="update user_form_tbl set user_name=?, password=?, email=?, gender=?, hobbies=?, nationality=?, dob=? where id =?";
 	public static final String DELETE_SQL="delete from user_form_tbl where id=?";
 	public static final String GET_BY_ID_SQL="select * from user_form_tbl where id=?";
