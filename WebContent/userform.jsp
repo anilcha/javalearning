@@ -9,7 +9,7 @@
 <body>
 	<div>
 	<form action="UserController" method="post">
-	</form>
+	
 		<div>
 			<label>Username</label>
 			<input type="text" name="user_name">
@@ -24,7 +24,7 @@
 		</div>
 		<div>
 			<label>Dob</label>
-			<input type="text" name="dob">
+			<input type="date" name="dob">
 		</div>
 		<div>
 			<label>Gender</label>
@@ -44,10 +44,11 @@
 				<option value="Chinese">Chinese</option>
 				<option value="India">India</option>
 			</select>
+		</div>
 			<div>
 				<input type="submit" value="Submit">
 			</div>
-		</div>
+			</form>
 	</div>
 </body>
 </html>

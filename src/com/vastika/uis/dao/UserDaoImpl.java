@@ -83,7 +83,7 @@ public class UserDaoImpl implements UserDao{
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				user.setId(rs.getInt("id"));
 				user.setUser_name(rs.getString("user_name"));
 				user.setPassword(rs.getString("password"));
@@ -110,7 +110,7 @@ public class UserDaoImpl implements UserDao{
 	
 			ResultSet rs = ps.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				User user = new User();
 				user.setId(rs.getInt("id"));
 				user.setUser_name(rs.getString("user_name"));

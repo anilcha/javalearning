@@ -20,14 +20,34 @@ import com.vastika.uis.service.UserServiceImpl;
 @WebServlet("/UserController")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final String USER_FORM="userForm.jsp";
+	private static final String USER_LIST="userList.jsp";
 	
 	// to send the date to the service, creating object for the service
 	UserService userService = new UserServiceImpl();
        
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String a = request.getParameter("actions");
+		String forward="";
+		
+		if (a.equals("edit")) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			forward=USER_FORM;
+		}
+		
+		else if (a.equals("delete")) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			userService.deleteUser(id);
+			request.setAttribute("users", userService.getAllUserInfo());
+			forward=USER_LIST;
+		}	
+		
+		else if (a.equals("add")) {
+			forward=USER_FORM;		
+		}
+		RequestDispatcher rd = request.getRequestDispatcher(forward);		
+		rd.forward(request, response);
 	}
 
 
@@ -67,6 +87,8 @@ public class UserController extends HttpServlet {
 		//after saving the date and sending to the next form, create another JSP file (userlist)
 
 		RequestDispatcher rd = request.getRequestDispatcher("userList.jsp");
+		// to bring all the data in the userlist
+		request.setAttribute("users", userService.getAllUserInfo());		
 		rd.forward(request, response);
 		
 
