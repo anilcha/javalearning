@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>User Registration Form</title>
+<%@include file="header.jsp"%>
 </head>
 <body>
 	<div>
 	<form action="UserController" method="post">
 	
 		<div>
-			<label>Username</label>
+			<label>User_Name</label>
 			<input type="text" name="user_name">
 		</div>
 		<div>
@@ -42,7 +42,13 @@
 				<option value="Nepal">Nepal</option>
 				<option value="USA">USA</option>
 				<option value="Chinese">Chinese</option>
-				<option value="India">India</option>
+				<option value="Brazil">Brazil</option>
+				<option value="England">England</option>
+				<option value="Norway">Norway</option>
+				<option value="Canada">Canada</option>
+				<option value="Mexico">Mexico</option>
+				<option value="Argentina">Argentina</option>
+				<option value="France">France</option>
 			</select>
 		</div>
 			<div>

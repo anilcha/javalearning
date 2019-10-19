@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>User List</title>
+<%@include file="header.jsp"%>
 </head>
 <body>
 	<h1>User List</h1>
@@ -16,7 +17,7 @@
 				<tr>
 					<th>SN</th>						
 					<th>ID</th>
-					<th>Username</th>
+					<th>User_Name</th>
 					<th>Password</th>
 					<th>Email</th>
 					<th>Gender</th>

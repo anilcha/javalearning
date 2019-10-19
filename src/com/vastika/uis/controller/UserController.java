@@ -21,6 +21,7 @@ import com.vastika.uis.service.UserServiceImpl;
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String USER_FORM="userForm.jsp";
+	private static final String USER_EDIT_FORM="userEditForm.jsp";
 	private static final String USER_LIST="userList.jsp";
 	
 	// to send the date to the service, creating object for the service
@@ -33,7 +34,8 @@ public class UserController extends HttpServlet {
 		
 		if (a.equals("edit")) {
 			int id = Integer.parseInt(request.getParameter("id"));
-			forward=USER_FORM;
+			request.setAttribute("user", userService.getUserInfoById(id)); // to retrieve users by id
+			forward=USER_EDIT_FORM;
 		}
 		
 		else if (a.equals("delete")) {
@@ -45,6 +47,10 @@ public class UserController extends HttpServlet {
 		
 		else if (a.equals("add")) {
 			forward=USER_FORM;		
+		}
+		else if (a.equals("list")) {										// TO BRING ALL THE LIST WHILE OPENING USER FROM THE HOME PAGE
+			request.setAttribute("users", userService.getAllUserInfo());
+			forward=USER_LIST;		
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(forward);		
 		rd.forward(request, response);
@@ -78,11 +84,19 @@ public class UserController extends HttpServlet {
 			
 			user.setHobbies(hobbies);
 			
+			String userId= request.getParameter("id");
+			if(userId==null || userId.isEmpty()) {
+				userService.saveUser(user);
 		}
+			else {
+				int id=Integer.parseInt(userId);
+				user.setId(id);
+				userService.updateUser(user);
+			}
 		
 		// now saving data in the UserService
 		
-		userService.saveUser(user);
+		
 		
 		//after saving the date and sending to the next form, create another JSP file (userlist)
 
@@ -91,7 +105,7 @@ public class UserController extends HttpServlet {
 		request.setAttribute("users", userService.getAllUserInfo());		
 		rd.forward(request, response);
 		
-
+		}
 	}
 
 }
