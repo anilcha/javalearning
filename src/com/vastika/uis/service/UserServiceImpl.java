@@ -40,4 +40,10 @@ public class UserServiceImpl implements UserService{
 		return userDao.getAllUserInfo();
 	}
 
+	@Override
+	public User getUserByUsernameAndPassword(String user_name, String password) {
+		userDao.getUserByUsernameAndPassword(user_name, password);
+		return null;
+	}
+
 }

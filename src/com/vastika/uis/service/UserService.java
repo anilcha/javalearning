@@ -15,5 +15,7 @@ public interface UserService {
 	User getUserInfoById(int id); 
 	
 	List<User> getAllUserInfo();
+	
+	User getUserByUsernameAndPassword(String user_name, String password);
 
 }
