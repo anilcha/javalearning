@@ -22,7 +22,7 @@
 		</div>
 		<div>
 			<label>Password</label>
-			<input type="text" name="password" value="${user.password}">
+			<input type="text" name="password" class="cool" value="${user.password}">
 		</div>
 		<div>
 			<label>Email</label>
