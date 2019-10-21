@@ -32,11 +32,11 @@ Cookie[] cookies = request.getCookies();
                             <h3 class="text-center text-info">Login</h3>                          
                             <div class="form-group">
                                 <label for="username" class="text-info">Username:</label><br>
-                                <input type="text" id="user_name" class="form-control" name="uname" placeholder="User_name" value="${un}" required autofocus>
+                                <input type="text" id="user_name" class="form-control" name="uname" placeholder="(e.g. javaclass)" value="${un}" required autofocus>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="cool">Password:</label><br>
-                                <input type="password" id="password" class="form-control" name="pass" placeholder="Password" value="${pw}" required>
+                                <input type="password" id="password" class="form-control" name="pass" placeholder="(e.g. java@123!)" value="${pw}" required>
                             </div>
                             <div class="form-group">
                                 <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox" value="remember-me"></span></label><br>

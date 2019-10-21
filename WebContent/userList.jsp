@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>User List</h1>
-	<a href="UserController?actions=add">Add User</a>
+	<a href="UserController?actions=add"></a>
 	<c:if test="${!empty users}">
 	<!-- to use table strip add table stripe into the table tag -->
 		<table class="table table-striped">

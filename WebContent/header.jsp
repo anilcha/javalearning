@@ -26,9 +26,10 @@
         	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown
         </a>
         <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Account Dept</a>
-          <a class="dropdown-item" href="#">Finance Dept</a>        
-          <a class="dropdown-item" href="#">Logout</a>
+          	<a class="dropdown-item" href="userForm.jsp">Add</a>
+			<a class="dropdown-item" href="UserController?actions=list">Edit</a>
+			<a class="dropdown-item" href="UserController?actions=list">Delete</a>
+			<a class="dropdown-item" href="#">Logout</a>
         </div>
       </li>
 </ul>
