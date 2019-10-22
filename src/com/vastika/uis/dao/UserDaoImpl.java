@@ -83,7 +83,7 @@ public class UserDaoImpl implements UserDao{
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				user.setId(rs.getInt("id"));
 				user.setUser_name(rs.getString("user_name"));
 				user.setPassword(rs.getString("password"));
@@ -110,7 +110,7 @@ public class UserDaoImpl implements UserDao{
 	
 			ResultSet rs = ps.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				User user = new User();
 				user.setId(rs.getInt("id"));
 				user.setUser_name(rs.getString("user_name"));
@@ -129,4 +129,68 @@ public class UserDaoImpl implements UserDao{
 			
 		return userList;
 	}
+
+	@Override
+	public User getUserByUsernameAndPassword(String user_name, String password) {
+		String SQL_UN_PW ="select * from user_form_tbl where user_name=? and password=?";
+		User user = new User();
+		try(Connection con = DbUtil.getConnection();
+				PreparedStatement ps = con.prepareStatement(SQL_UN_PW);
+				){
+			ps.setString(1, user_name);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				user.setId(rs.getInt("id"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setPassword(rs.getString("password"));
+				user.setEmail(rs.getString("email"));
+				user.setGender(rs.getNString("gender"));
+				user.setHobbies(rs.getString("hobbies"));
+				user.setNationality(rs.getString("nationality"));
+				user.setDob(rs.getDate("dob"));
+				return user;   		// to validate user login credentials either return or null
+				
+			}
+		}catch ( ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} 
+			
+		return null;
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		String SQL_EMAIL ="select * from user_form_tbl where email=?";
+		User user = new User();
+		try(Connection con = DbUtil.getConnection();
+				PreparedStatement ps = con.prepareStatement(SQL_EMAIL);
+				){
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				user.setId(rs.getInt("id"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setPassword(rs.getString("password"));
+				user.setEmail(rs.getString("email"));
+				user.setGender(rs.getNString("gender"));
+				user.setHobbies(rs.getString("hobbies"));
+				user.setNationality(rs.getString("nationality"));
+				user.setDob(rs.getDate("dob"));
+				return user;   			
+				
+			}
+		}catch ( ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} 
+			
+		return null;
+	}
 }
+
+
+
+
+
