@@ -15,15 +15,15 @@ import com.vastika.uis.model.User;
 import com.vastika.uis.service.UserService;
 import com.vastika.uis.service.UserServiceImpl;
 
-
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	UserService userService = new UserServiceImpl();   	// creating the object
+	UserService userService = new UserServiceImpl(); // creating the object
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// to display message after successfully logged out.
-		
+
 		HttpSession session = request.getSession();
 		session.invalidate();
 		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
@@ -31,43 +31,37 @@ public class LoginController extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	String user_name = request.getParameter("uname");
-	String password =request.getParameter("pass");
-	String rememberMe = request.getParameter("remember-me");
-	
-	User user = userService.getUserByUsernameAndPassword(user_name, password);
-	
-	if(rememberMe == null) {
-		
-	}
-	
-	if (user != null) {
-		// to set cookie
-		if (rememberMe != null) {
-			Cookie cookie1 = new Cookie("uname", user_name);
-			Cookie cookie2 = new Cookie("pass", password);
-			
-			cookie1.setMaxAge(100);
-			cookie2.setMaxAge(100);
-			
-			response.addCookie(cookie1);
-			response.addCookie(cookie2);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String user_name = request.getParameter("uname");
+		String password = request.getParameter("pass");
+		String rememberMe = request.getParameter("remember-me");
+
+		User user = userService.getUserByUsernameAndPassword(user_name, password);
+
+		if (user != null) {
+			// to set cookie
+			if (rememberMe != null) {
+				Cookie cookie1 = new Cookie("uname", user_name);
+				Cookie cookie2 = new Cookie("pass", password);
+
+				cookie1.setMaxAge(100);
+				cookie2.setMaxAge(100);
+
+				response.addCookie(cookie1);
+				response.addCookie(cookie2);
+			}
+			HttpSession session = request.getSession();
+			session.setAttribute("u", user_name);
+			RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+			rd.forward(request, response);
+
+		} else {
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			request.setAttribute("msg", "Incorrect username or password. Please try again");
+			rd.forward(request, response);
 		}
-	}
-	
-	
-	if (user != null){
-		HttpSession session = request.getSession();
-		session.setAttribute("u", user_name);  
-		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
-		rd.forward(request, response);
-	}else {
-		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-		request.setAttribute("msg", "Incorrect username or password. Please try again");
-		rd.forward(request, response);
-	}
-	
+
 	}
 
 }

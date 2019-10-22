@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header>
-		<h1>Welcome to OCASh's home page!!</h1>
+		<span style="color: blue; font-size:40px">Welcome to OCASh's home page!!</span>
 	</header>
 </body>
 </html>

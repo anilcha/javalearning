@@ -32,7 +32,7 @@ Cookie[] cookies = request.getCookies();
                             <h3 class="text-center text-info">Login</h3>                          
                             <div class="form-group">
                                 <label for="username" class="text-info">Username:</label><br>
-                                <input type="text" id="user_name" class="form-control" name="uname" placeholder="(e.g. javaclass)" value="${un}" required autofocus>
+                                <input type="text" id="user_name" class="form-control" name="uname" placeholder="(e.g. visitnepal2019)" value="${un}" required autofocus>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="cool">Password:</label><br>
@@ -47,6 +47,7 @@ Cookie[] cookies = request.getCookies();
                             </div>
                             <div id="forgot-password-link" class="text-right">
                             	<a href="userEditForm.jsp" class="text-info">Forgot Password</a>
+                            	
                             </div>
                         </form>
                     </div>
