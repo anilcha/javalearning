@@ -8,8 +8,10 @@ pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
 </head>
 <body>
-	<header>
-		<span style="color: blue; font-size:40px">Welcome to OCASh's home page!!</span>
-	</header>
+	<div>
+		<marquee class="marq" bgcolor = "Green" direction = "left" loop="" >
+			<span style="color: blue; font-size:80px">Welcome to OCASh's home page!!</span>	
+		</marquee>	
+	</div>
 </body>
 </html>

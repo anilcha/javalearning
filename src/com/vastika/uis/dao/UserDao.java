@@ -10,6 +10,8 @@ public interface UserDao {
 	
 	void updateUser (User user);
 	
+	void resetPassword (User user);
+	
 	void deleteUser (int id);
 	
 	User getUserInfoById (int id);
@@ -18,6 +20,6 @@ public interface UserDao {
 	
 	User getUserByUsernameAndPassword(String user_name, String password);
 	
-	User getUserByEmail(String email);
+	User getUserByUsernameAndEmail(String user_name, String email);
 	
 }

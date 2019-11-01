@@ -10,6 +10,8 @@ public interface UserService {
 		
 	void updateUser (User user) ;
 	
+	void resetPassword (User user);
+	
 	void deleteUser (int id); 
 	
 	User getUserInfoById(int id); 
@@ -18,6 +20,6 @@ public interface UserService {
 	
 	User getUserByUsernameAndPassword(String user_name, String password);
 	
-	User GetUserByEmail(String email);
+	User GetUserByUsernameAndEmail(String user_name, String email);
 
 }

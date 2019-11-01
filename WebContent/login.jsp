@@ -22,7 +22,7 @@ Cookie[] cookies = request.getCookies();
 
 <body>
     <div id="login">
-        <h3 class="text-center text-white pt-5">OCASh LLC</h3>
+        <h3 class="text-center text-white pt-10">OCASh LLC</h3>
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
@@ -43,11 +43,10 @@ Cookie[] cookies = request.getCookies();
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                             </div>
                             <div id="register-link" class="text-right">
-                                <a href="userForm.jsp" class="text-info">Register Now</a>                                
+                                <a href="userform.jsp" class="text-info">Register Now</a>                                
                             </div>
                             <div id="forgot-password-link" class="text-right">
-                            	<a href="userEditForm.jsp" class="text-info">Forgot Password</a>
-                            	
+                            	<a href="forgotpassword.jsp" class="text-info">Forgot Password</a>                            	
                             </div>
                         </form>
                     </div>

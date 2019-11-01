@@ -14,6 +14,7 @@ import com.vastika.uis.util.DbUtil;
 public class UserDaoImpl implements UserDao{
 	public static final String INSERT_SQL="insert into user_form_tbl(user_name, password, email, gender, hobbies, nationality, dob) values(?,?,?,?,?,?,?)";
 	public static final String UPDATE_SQL="update user_form_tbl set user_name=?, password=?, email=?, gender=?, hobbies=?, nationality=?, dob=? where id =?";
+	public static final String RESET_SQL="update user_form_tbl set user_name=?, password=?, email=?, gender=?, hobbies=?, nationality=?, dob=? where id =?";
 	public static final String DELETE_SQL="delete from user_form_tbl where id=?";
 	public static final String GET_BY_ID_SQL="select * from user_form_tbl where id=?";
 	public static final String GET_ALL_SQL="select * from user_form_tbl";
@@ -58,6 +59,27 @@ public class UserDaoImpl implements UserDao{
 		}catch ( ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} 
+	}
+	
+	@Override
+	public void resetPassword(User user) {
+		try(
+				Connection con = DbUtil.getConnection();
+				PreparedStatement ps = con.prepareStatement(RESET_SQL);
+				){
+				ps.setString(1, user.getUser_name());
+				ps.setString(2, user.getPassword());
+				ps.setString(3, user.getEmail());
+				ps.setString(4, user.getGender());
+				ps.setString(5, user.getHobbies());
+				ps.setString(6, user.getNationality());
+				ps.setDate(7, new Date(user.getDob().getTime()));
+				ps.setInt(8,  user.getId());
+				ps.executeUpdate();
+				
+				}catch ( ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				} 	
 	}
 
 	@Override
@@ -161,13 +183,14 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User getUserByEmail(String email) {
-		String SQL_EMAIL ="select * from user_form_tbl where email=?";
+	public User getUserByUsernameAndEmail(String user_name, String email) {
+		String SQL_UN_EMAIL ="select * from user_form_tbl where user_name=? and email=?";
 		User user = new User();
 		try(Connection con = DbUtil.getConnection();
-				PreparedStatement ps = con.prepareStatement(SQL_EMAIL);
+				PreparedStatement ps = con.prepareStatement(SQL_UN_EMAIL);
 				){
-			ps.setString(1, email);
+			ps.setString(1, user_name);
+			ps.setString(2, email);
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
@@ -188,6 +211,8 @@ public class UserDaoImpl implements UserDao{
 			
 		return null;
 	}
+
+
 }
 
 

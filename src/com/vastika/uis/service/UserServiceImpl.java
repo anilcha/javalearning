@@ -21,6 +21,12 @@ public class UserServiceImpl implements UserService{
 		userDao.updateUser(user);
 		
 	}
+	
+	@Override
+	public void resetPassword(User user) {
+	userDao.resetPassword(user);	
+		
+	}
 
 	@Override
 	public void deleteUser(int id) {
@@ -43,12 +49,15 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User getUserByUsernameAndPassword(String user_name, String password) {
 		userDao.getUserByUsernameAndPassword(user_name, password);
+		
 		return userDao.getUserByUsernameAndPassword(user_name, password);
 	}
 
 	@Override
-	public User GetUserByEmail(String email) {
-		userDao.getUserByEmail(email);		
-		return userDao.getUserByEmail(email);
+	public User GetUserByUsernameAndEmail(String user_name, String email) {
+		userDao.getUserByUsernameAndEmail(user_name, email);
+		
+		return userDao.getUserByUsernameAndEmail(user_name, email);
 	}
+
 }
